@@ -46,6 +46,7 @@ function draw()
             for i=1,#starttimes-1,1 do
                  --moving calculation to one variable so it will only excecuted once and used twice. Intrepeters might already ahead of this so efficiency might not be significant.
                 local num_sv = (starttimes[#starttimes-i+1] - starttimes[1]) / INCREMENT * (AVG_SV - INT_SV)
+                num_sv = num_sv + num_sv * ((INT_SV / AVG_SV)*4)
                 table.insert(svs, utils.CreateScrollVelocity(starttimes[i] - INCREMENT, num_sv))
                 table.insert(svs, utils.CreateScrollVelocity(starttimes[i], -1 * num_sv))
                 table.insert(svs, utils.CreateScrollVelocity(starttimes[i] + INCREMENT, INT_SV))
